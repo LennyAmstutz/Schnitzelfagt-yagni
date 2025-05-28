@@ -1,0 +1,7 @@
+{
+  "name": "Schnitzelfagt-yagni",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
