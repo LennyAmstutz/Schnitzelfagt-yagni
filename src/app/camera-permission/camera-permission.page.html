@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>cameraPermission</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="permission-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Camera Permission</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content [fullscreen]="true">
-   <div class="content-center">
-      <h2>Camera Permission Required</h2>
-      <p>We need your camera permission to continue.</p>
+  <div class="permission-wrapper">
+    <p class="permission-text">
+      Diese App benötigt Zugriff auf deine Kamera.
+      Möchtest du das erlauben?
+    </p>
 
-      <ion-button expand="block" color="primary" (click)="requestCameraPermission()">
-        Allow
-      </ion-button>
+    <ion-button expand="block" class="permission-button" (click)="requestCameraPermission()">
+      Zugriff erlauben
+    </ion-button>
 
-      <ion-button expand="block" color="medium" routerLink="/home">
-        Deny
-      </ion-button>
-    </div>
-  </ion-content>
+    <ion-button expand="block" fill="outline" class="permission-button" routerLink="/home">
+      Abbrechen
+    </ion-button>
+  </div>
+</ion-content>

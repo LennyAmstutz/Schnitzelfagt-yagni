@@ -1,21 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>geolocationPermission</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="permission-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Location Permission</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
+  <div class="permission-wrapper">
+    <p class="permission-text">
+      Diese App benötigt Zugriff auf deinen Standort.
+      Möchtest du das erlauben?
+    </p>
 
-<ion-content [fullscreen]="true">
-  <div class="content-center">
-    <h2>Geolocation Permission Required</h2>
-    <p>We need your location to continue.</p>
-
-    <ion-button expand="block" color="primary" (click)="requestGeolocationPermission()">
-      Allow
+    <ion-button expand="block" class="permission-button" (click)="requestGeolocationPermission()">
+      Zugriff erlauben
     </ion-button>
 
-    <ion-button expand="block" color="medium" routerLink="/home">
-      Deny
+    <ion-button expand="block" fill="outline" class="permission-button" routerLink="/home">
+      Abbrechen
     </ion-button>
   </div>
 </ion-content>
