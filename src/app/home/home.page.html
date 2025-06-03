@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="titleScavangerHunt">
-      Scavanger Hunt
+    <ion-title class="titleScavengerHunt">
+      Scavenger Hunt
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
  <app-leaderboard class="leaderboard"></app-leaderboard>
-  <ion-button> Start Game </ion-button>
+  <ion-button expand="block" [routerLink]="['/setup']">Start Game</ion-button>
 </ion-content>
