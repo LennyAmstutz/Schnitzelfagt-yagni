@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>geolocationPermission</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div class="content-center">
+    <h2>Geolocation Permission Required</h2>
+    <p>We need your location to continue.</p>
+
+    <ion-button expand="block" color="primary" (click)="requestGeolocationPermission()">
+      Allow
+    </ion-button>
+
+    <ion-button expand="block" color="medium" routerLink="/home">
+      Deny
+    </ion-button>
+  </div>
+</ion-content>
