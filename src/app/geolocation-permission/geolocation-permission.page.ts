@@ -31,9 +31,9 @@ export class GeolocationPermissionPage {
 
   async requestGeolocationPermission() {
     const result = await Geolocation.requestPermissions();
-    if (result.location === 'granted') {
+    if(result.location === 'granted') {
       this.router.navigate(['/geolocation']);
-    } else {
+    }else {
       this.router.navigate(['/home']);
     }
   }

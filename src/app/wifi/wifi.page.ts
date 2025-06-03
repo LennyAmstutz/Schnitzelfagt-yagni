@@ -16,10 +16,6 @@ import { TaskBoxComponent } from '../components/task-box/task-box.component';
   styleUrls: ['./wifi.page.scss'],
   standalone: true,
   imports: [
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     SuccessScreenComponent,
