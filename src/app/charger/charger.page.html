@@ -1,10 +1,15 @@
 <ng-container *ngIf="!success">
-  <app-task-box
+  <app-task-box class="chargerTaskInstuctions"
     [title]="'Charger Task'"
-    [description]="'Bewege dich oder warte 10 Sekunden.'"
+    [description]="'Plug in your charger.'"
     [time]="formattedTime"
     [skipRoute]="'/wifi'"
   ></app-task-box>
+
+<div class="batteryBox">
+  <ion-icon class="battery-charging-outline" name="battery-charging-outline" ></ion-icon>
+</div>
+
 </ng-container>
 
 <app-success-screen *ngIf="success" [nextRoute]="'/wifi'"></app-success-screen>
