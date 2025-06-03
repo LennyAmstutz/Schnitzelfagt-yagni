@@ -1,0 +1,33 @@
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: auto;
+  max-width: 100%;
+
+  thead {
+    th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+  }
+
+  tbody {
+    th {
+      background-color: #fafafa;
+      font-weight: bold;
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ccc;
+    }
+
+    td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+  }
+}
+

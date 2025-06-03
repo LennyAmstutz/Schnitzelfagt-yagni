@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>cameraPermission</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   <div class="content-center">
+      <h2>Camera Permission Required</h2>
+      <p>We need your camera permission to continue.</p>
+
+      <ion-button expand="block" color="primary" (click)="requestCameraPermission()">
+        Allow
+      </ion-button>
+
+      <ion-button expand="block" color="medium" routerLink="/home">
+        Deny
+      </ion-button>
+    </div>
+  </ion-content>

@@ -1,0 +1,29 @@
+.center-box {
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  height: auto;
+  margin-top: 30vh; // verschiebt nach unten (zentriert optisch)
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.name-input {
+  margin-bottom: 20px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+}

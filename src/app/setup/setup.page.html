@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>setup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="center-box">
+    <ion-label class="label">Enter Name:</ion-label>
+    <ion-input
+      fill="outline"
+      placeholder="Your name"
+      class="name-input"
+      [(ngModel)]="userName"
+    ></ion-input>
+
+    <div class="button-row">
+      <ion-button color="medium" (click)="quit()">Quit</ion-button>
+      <ion-button color="primary" (click)="submitName()">Submit</ion-button>
+    </div>
+  </div>
+
+</ion-content>
