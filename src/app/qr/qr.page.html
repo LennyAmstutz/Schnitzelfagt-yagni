@@ -1,0 +1,10 @@
+<ng-container *ngIf="!success">
+  <app-task-box
+    [title]="'Distance Task'"
+    [description]="'Bewege dich oder warte 10 Sekunden.'"
+    [time]="formattedTime"
+    [skipRoute]="'/sensor'"
+  ></app-task-box>
+</ng-container>
+
+<app-success-screen *ngIf="success" [nextRoute]="'/sensor'"></app-success-screen>

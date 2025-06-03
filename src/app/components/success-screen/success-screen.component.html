@@ -1,0 +1,55 @@
+<div class="success-wrapper">
+  <h2 class="success-text">Success</h2>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="300px"
+    viewBox="0 -960 960 960"
+    width="300px"
+    fill="green"
+  >
+    <path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z" />
+  </svg>
+
+  <ion-footer class="ion-padding">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button routerLink="/home">
+          <div class="footer-icon-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="32px"
+              viewBox="0 -960 960 960"
+              width="32px"
+              fill="white"
+            >
+              <path
+                d="M220-180h150v-250h220v250h150v-390L480-765 220-570v390Zm-60 60v-480l320-240 320 240v480H530v-250H430v250H160Zm320-353Z"
+              />
+            </svg>
+            <span>Home</span>
+          </div>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button [routerLink]="nextRoute">
+          <div class="footer-icon-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="32px"
+              viewBox="0 -960 960 960"
+              width="32px"
+              fill="white"
+            >
+              <path
+                d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"
+              />
+            </svg>
+            <span>Next</span>
+          </div>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</div>

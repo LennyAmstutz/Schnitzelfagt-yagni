@@ -1,0 +1,51 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>{{ title }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <p>{{ description }}</p>
+    <p><strong>Time:</strong> {{ time }}</p>
+  </ion-card-content>
+</ion-card>
+
+<ion-footer class="ion-padding">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="presentHomeAlert()">
+        <div class="footer-icon-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="32px"
+            viewBox="0 -960 960 960"
+            width="32px"
+            fill="#FFFFFF"
+          >
+            <path
+              d="M220-180h150v-250h220v250h150v-390L480-765 220-570v390Zm-60 60v-480l320-240 320 240v480H530v-250H430v250H160Zm320-353Z"
+            />
+          </svg>
+          <span>Home</span>
+        </div>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="skipRoute">
+        <div class="footer-icon-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48px"
+            viewBox="0 -960 960 960"
+            width="48px"
+            fill="#FFFFFF"
+          >
+            <path
+              d="m242-200 210-280-210-280h74l210 280-210 280h-74Zm252 0 210-280-210-280h74l210 280-210 280h-74Z"
+            />
+          </svg>
+          <span>Skip</span>
+        </div>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

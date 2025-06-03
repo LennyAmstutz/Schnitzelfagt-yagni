@@ -1,0 +1,83 @@
+<ion-content class="ion-padding finish-content">
+  <ion-card class="finish-card">
+    <ion-card-header>
+      <ion-card-title class="finish-title">
+        You’ve completed the scavenger hunt
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="finish-icon-wrapper">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="80px"
+        viewBox="0 -960 960 960"
+        width="80px"
+        fill="green"
+      >
+        <path
+          d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"
+        />
+      </svg>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="stats-wrapper">
+    <div class="stat-row">
+      <span class="stat-icon">⏱️</span>
+      <span class="stat-label">Time:</span>
+      <span class="stat-value">{{ totalTime }}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-icon">🏅</span>
+      <span class="stat-label">Medals:</span>
+      <span class="stat-value">{{ totalMedals }}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-icon">🥾</span>
+      <span class="stat-label">Distance:</span>
+      <span class="stat-value">{{ totalDistance }} m</span>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-toolbar class="finish-footer-toolbar">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home" class="footer-button">
+        <div class="footer-icon-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="32px"
+            viewBox="0 -960 960 960"
+            width="32px"
+            fill="#FFFFFF"
+          >
+            <path
+              d="M220-180h150v-250h220v250h150v-390L480-765 220-570v390Zm-60 60v-480l320-240 320 240v480H530v-250H430v250H160Zm320-353Z"
+            />
+          </svg>
+          <span>Home</span>
+        </div>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/leaderboard" class="footer-button">
+        <div class="footer-icon-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="32px"
+            viewBox="0 -960 960 960"
+            width="32px"
+            fill="white"
+          >
+            <path
+              d="M140-180h187v-360H140v360Zm247 0h186v-600H387v600Zm246 0h187v-280H633v280ZM80-120v-480h247v-240h306v320h247v400H80Z"
+            />
+          </svg>
+          <span>Leaderboard</span>
+        </div>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
