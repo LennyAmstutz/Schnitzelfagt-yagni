@@ -1,97 +1,118 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import {
   IonContent,
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonButton,
+  IonIcon,
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { batteryChargingOutline } from 'ionicons/icons';
+
 import { SuccessScreenComponent } from '../components/success-screen/success-screen.component';
 import { TaskBoxComponent } from '../components/task-box/task-box.component';
-import {BatteryStatus} from "@awesome-cordova-plugins/battery-status/ngx";
-import {BatteryStatusResponse} from "@awesome-cordova-plugins/battery-status";
-import {IonIcon} from "@ionic/angular/standalone";
-import {addIcons} from "ionicons";
-import {batteryChargingOutline} from "ionicons/icons";
-import { Router } from '@angular/router';
 
 import { GameService } from '../services/game.service';
 import { TASK_DURATIONS } from '../constants/task-durations';
 
+import {
+  BatteryStatus,
+  BatteryStatusResponse,
+} from '@awesome-cordova-plugins/battery-status/ngx';
+
 @Component({
   selector: 'app-charger',
-  templateUrl: './charger.page.html',
-  styleUrls: ['./charger.page.scss'],
   standalone: true,
-  providers: [BatteryStatus],
   imports: [
     CommonModule,
     FormsModule,
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    IonButton,
+    IonIcon,
     SuccessScreenComponent,
     TaskBoxComponent,
-    IonIcon,
   ],
+  providers: [BatteryStatus],
+  templateUrl: './charger.page.html',
+  styleUrls: ['./charger.page.scss'],
 })
 export class ChargerPage implements OnInit {
   formattedTime = '00:00';
   success = false;
-  remainingSeconds = TASK_DURATIONS.charger;
-  private intervalId: any;
+  remainingSeconds: number = TASK_DURATIONS.charger;
 
-  constructor(
-    private router: Router,
-    private game: GameService,
-  ) {}
-  remainingSeconds = 30;
+  private intervalId: any = null;
+  private subscription: any = null;
+
   charging = false;
-  private interval: any = null;
 
   constructor(
     private batteryStatus: BatteryStatus,
     private ngZone: NgZone,
-    private router: Router
+    private router: Router,
+    private game: GameService,
   ) {
     addIcons({
-      batteryChargingOutline
+      batteryChargingOutline,
     });
   }
 
   ngOnInit() {
-    this.listenToCharging();
     this.formattedTime = this.formatTime(this.remainingSeconds);
+    this.listenToCharging();
     this.startCountdown();
   }
 
-  listenToCharging() {
-    this.batteryStatus.onChange().subscribe((status: BatteryStatusResponse) => {
-      this.ngZone.run(() => {
-        this.charging = status.isPlugged;
-        if (this.charging && !this.success) {
-          this.stopCountdown();
-          this.success = true;
-        }
+  private listenToCharging() {
+    this.subscription = this.batteryStatus
+      .onChange()
+      .subscribe((status: BatteryStatusResponse) => {
+        this.ngZone.run(() => {
+          this.charging = status.isPlugged;
+          if (this.charging && !this.success) {
+            this.stopAll();
+            this.success = true;
+          }
+        });
       });
-    });
   }
 
   onSkip() {
     this.game.skipTask();
     this.router.navigate(['/wifi']);
+    this.stopAll();
   }
 
-  startCountdown() {
+  private startCountdown() {
     this.intervalId = setInterval(() => {
       this.remainingSeconds--;
       this.formattedTime = this.formatTime(this.remainingSeconds);
 
       if (this.remainingSeconds <= 0) {
-        clearInterval(this.intervalId);
+        this.stopAll();
         this.game.skipTask();
         this.router.navigate(['/wifi']);
       }
     }, 1000);
+  }
+
+  private stopAll() {
+    if (this.intervalId !== null) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = null;
+    }
   }
 
   private formatTime(seconds: number): string {
