@@ -1,12 +1,19 @@
 <ng-container *ngIf="!success">
   <app-task-box
     [title]="'Wifi Task'"
-    [description]="'Bewege dich oder warte 10 Sekunden.'"
+    [description]="'Verbinde dich mit dem WLAN und trenne es wieder.'"
     [time]="formattedTime"
     [skipRoute]="'/finish'"
     (skip)="onSkip()"
 
   ></app-task-box>
+
+
+  <div class="wifiBox">
+    <ion-icon name="wifi-outline"></ion-icon>
+  </div>
 </ng-container>
 
 <app-success-screen *ngIf="success" [nextRoute]="'/finish'"></app-success-screen>
+
+

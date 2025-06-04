@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
 import { SuccessScreenComponent } from '../components/success-screen/success-screen.component';
 import { TaskBoxComponent } from '../components/task-box/task-box.component';
+import {IonIcon} from "@ionic/angular/standalone";
+import {addIcons} from "ionicons";
+import {wifiOutline} from "ionicons/icons";
 import { Router } from '@angular/router';
-import { GameService } from '../services/game.service';
-import { TASK_DURATIONS } from '../constants/task-durations';
+
+
+declare var WifiWizard2: any;
 
 @Component({
   selector: 'app-wifi',
@@ -23,6 +21,7 @@ import { TASK_DURATIONS } from '../constants/task-durations';
     FormsModule,
     SuccessScreenComponent,
     TaskBoxComponent,
+    IonIcon,
   ],
 })
 export class WifiPage implements OnInit {
@@ -36,9 +35,23 @@ export class WifiPage implements OnInit {
     private game: GameService,
   ) {}
 
+  targetSSID = 'ICT-BLJ';
+  wasConnected = false;
+  wasDisconnected = false;
+
+  private interval: any = null;
+  private wifiCheckInterval: any = null;
+
+  constructor(private ngZone: NgZone, private router: Router) {
+    addIcons({
+      wifiOutline
+    })
+  }
+
   ngOnInit() {
     this.formattedTime = this.formatTime(this.remainingSeconds);
     this.startCountdown();
+    this.monitorWifi();
   }
 
   onSkip() {
@@ -49,14 +62,56 @@ export class WifiPage implements OnInit {
   startCountdown() {
     this.intervalId = setInterval(() => {
       this.remainingSeconds--;
+
       this.formattedTime = this.formatTime(this.remainingSeconds);
 
       if (this.remainingSeconds <= 0) {
         clearInterval(this.intervalId);
         this.game.skipTask();
         this.router.navigate(['/finish']);
+        this.stopAll();
       }
     }, 1000);
+  }
+
+  monitorWifi() {
+    this.wifiCheckInterval = setInterval(async () => {
+      try {
+        const ssidRaw: string = await WifiWizard2.getConnectedSSID();
+        const ssid = ssidRaw.replace(/"/g, '');
+
+        this.ngZone.run(() => {
+          if (ssid === this.targetSSID) {
+            if (!this.wasConnected) {
+              this.wasConnected = true;
+              console.log('✅ Verbunden mit Ziel-WLAN');
+            }
+          } else {
+            if (this.wasConnected && !this.wasDisconnected) {
+              this.wasDisconnected = true;
+              console.log('✅ Verbindung getrennt');
+            }
+          }
+
+          if (this.wasConnected && this.wasDisconnected && !this.success) {
+            this.success = true;
+            this.stopAll();
+          }
+        });
+      } catch (err) {
+        this.ngZone.run(() => {
+          if (this.wasConnected && !this.wasDisconnected) {
+            this.wasDisconnected = true;
+            console.log('✅ Trennung erkannt');
+          }
+
+          if (this.wasConnected && this.wasDisconnected && !this.success) {
+            this.success = true;
+            this.stopAll();
+          }
+        });
+      }
+    }, 2000);
   }
 
   private formatTime(seconds: number): string {
