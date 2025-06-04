@@ -5,11 +5,8 @@
 }
 
 .finish-card {
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 1rem;
   border-radius: 12px;
-  /* Sanfter Schatten */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -67,10 +64,10 @@
 
 .footer-button {
   color: white;
-}
 
-.footer-button ion-icon {
-  margin-right: 0.5rem;
+  ion-icon {
+    margin-right: 0.5rem;
+  }
 }
 
 .footer-icon-button {
@@ -82,13 +79,26 @@
   svg {
     width: 32px;
     height: 32px;
-    fill: white;
+    fill: #222;
   }
 
   span {
     font-size: 12px;
     margin-top: 4px;
-    color: white;
+    color: #222;
+  }
+}
+
+// Dark Mode
+@media (prefers-color-scheme: dark) {
+  .footer-icon-button {
+    svg {
+      fill: #fff;
+    }
+
+    span {
+      color: #fff;
+    }
   }
 }
 
@@ -103,4 +113,3 @@ ion-button {
   --background: transparent;
   box-shadow: none;
 }
-

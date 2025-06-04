@@ -7,13 +7,26 @@
   svg {
     width: 32px;
     height: 32px;
-    fill: white;
   }
 
   span {
     font-size: 12px;
     margin-top: 4px;
-    color: white;
+  }
+
+  svg, span {
+    color: #222;
+    fill: #222;
+  }
+}
+
+// Dark Mode: helle Icons/Text
+@media (prefers-color-scheme: dark) {
+  .footer-icon-button {
+    svg, span {
+      color: #fff;
+      fill: #fff;
+    }
   }
 }
 
