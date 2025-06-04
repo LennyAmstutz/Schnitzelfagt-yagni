@@ -2,7 +2,6 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HapticService } from '../services/haptics.service';
 
 import {
   IonContent,
@@ -18,6 +17,7 @@ import { SuccessScreenComponent } from '../components/success-screen/success-scr
 import { TaskBoxComponent } from '../components/task-box/task-box.component';
 import { GameService } from '../services/game.service';
 import { TASK_DURATIONS } from '../constants/task-durations';
+import { HapticService } from '../services/haptics.service';
 
 declare var WifiWizard2: any;
 
@@ -103,8 +103,9 @@ export class WifiPage implements OnInit {
 
           if (this.wasConnected && this.wasDisconnected && !this.success) {
             this.success = true;
-            this.stopAll();
             this.game.completeTask();
+            this.stopAll();
+            this.haptic.vibrate();
           }
         });
       } catch {
@@ -118,6 +119,7 @@ export class WifiPage implements OnInit {
             this.success = true;
             this.haptic.vibrate();
             this.stopAll();
+            this.haptic.vibrate();
           }
         });
       }

@@ -7,7 +7,13 @@
     (skip)="onSkip()"
 
   ></app-task-box>
-  <ion-icon name="sync-outline" class="rotate-icon"></ion-icon>
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center ion-margin-top">
+        <ion-icon name="sync-outline" class="rotate-icon" size="large"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ng-container>
 
 <app-success-screen *ngIf="success" [nextRoute]="'/charger'"></app-success-screen>

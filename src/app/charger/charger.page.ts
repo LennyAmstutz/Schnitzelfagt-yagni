@@ -2,11 +2,8 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HapticService } from '../services/haptics.service';
 
-import {
-  IonIcon,
-} from '@ionic/angular/standalone';
+import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { batteryChargingOutline } from 'ionicons/icons';
 
@@ -20,6 +17,7 @@ import {
   BatteryStatus,
   BatteryStatusResponse,
 } from '@awesome-cordova-plugins/battery-status/ngx';
+import { HapticService } from '../services/haptics.service';
 
 @Component({
   selector: 'app-charger',

@@ -7,10 +7,11 @@ import { SuccessScreenComponent } from '../components/success-screen/success-scr
 import { Router } from '@angular/router';
 import { GameService } from '../services/game.service';
 import { TASK_DURATIONS } from '../constants/task-durations';
+import { HapticService } from '../services/haptics.service';
 
 enum GeolocationEnum {
   latitude = 47.027574,
-  longitude = 8.300886
+  longitude = 8.300886,
 }
 
 @Component({
@@ -38,6 +39,7 @@ export class GeolocationPage implements OnInit {
   constructor(
     private router: Router,
     private game: GameService,
+    private haptic: HapticService,
   ) {}
 
   async ngOnInit() {
@@ -85,16 +87,20 @@ export class GeolocationPage implements OnInit {
           const currentLat = position.coords.latitude;
           const currentLon = position.coords.longitude;
 
-          const distance = this.haversineDistanceToFixedPoint(currentLat, currentLon);
-          this.currentDistance = distance.toFixed(2);  // Distanz updaten
+          const distance = this.haversineDistanceToFixedPoint(
+            currentLat,
+            currentLon,
+          );
+          this.currentDistance = distance.toFixed(2); // Distanz updaten
 
-          if (distance < 7) {  // Schwellenwert, ab dem Task als erfolgreich gilt
+          if (distance < 7) {
+            // Schwellenwert, ab dem Task als erfolgreich gilt
             this.completeTask();
           }
 
           this.cdr.detectChanges();
         }
-      }
+      },
     );
 
     this.watchId = await watcher;
@@ -103,6 +109,7 @@ export class GeolocationPage implements OnInit {
   async completeTask() {
     this.success = true;
     clearInterval(this.intervalId);
+    this.haptic.vibrate();
     await this.stopWatcher();
   }
 
@@ -112,7 +119,10 @@ export class GeolocationPage implements OnInit {
     }
   }
 
-  haversineDistanceToFixedPoint(currentLat: number, currentLon: number): number {
+  haversineDistanceToFixedPoint(
+    currentLat: number,
+    currentLon: number,
+  ): number {
     const R = 6371e3; // Erdradius in Metern
     const lat1Rad = currentLat * (Math.PI / 180);
     const lat2Rad = GeolocationEnum.latitude * (Math.PI / 180);
@@ -121,9 +131,7 @@ export class GeolocationPage implements OnInit {
 
     const a =
       Math.sin(deltaLat / 2) ** 2 +
-      Math.cos(lat1Rad) *
-      Math.cos(lat2Rad) *
-      Math.sin(deltaLon / 2) ** 2;
+      Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(deltaLon / 2) ** 2;
 
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }

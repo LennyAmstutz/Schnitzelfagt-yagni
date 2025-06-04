@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   IonButton,
+  IonCol,
   IonContent,
+  IonGrid,
   IonHeader,
   IonIcon,
+  IonRow,
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
@@ -31,6 +34,9 @@ import { qrCodeOutline } from 'ionicons/icons';
     SuccessScreenComponent,
     TaskBoxComponent,
     IonIcon,
+    IonGrid,
+    IonCol,
+    IonRow,
   ],
   templateUrl: './qr.page.html',
   styleUrls: ['./qr.page.scss'],
@@ -92,6 +98,7 @@ export class QrPage implements OnInit {
         this.success = true;
         clearInterval(this.intervalId);
         await this.haptic.vibrate();
+        this.game.completeTask();
       }
     } catch (err) {
       console.error('Barcode scan failed', err);
