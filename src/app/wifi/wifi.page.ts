@@ -53,8 +53,8 @@ export class WifiPage implements OnInit {
 
       if (this.remainingSeconds <= 0) {
         clearInterval(this.intervalId);
-        this.success = true;
-        this.game.completeTask();
+        this.game.skipTask();
+        this.router.navigate(['/finish']);
       }
     }, 1000);
   }

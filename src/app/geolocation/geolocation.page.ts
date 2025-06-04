@@ -47,8 +47,8 @@ export class GeolocationPage {
 
       if (this.remainingSeconds <= 0) {
         clearInterval(this.intervalId);
-        this.success = true;
-        this.game.completeTask();
+        this.game.skipTask();
+        this.router.navigate(['/distance']);
       }
     }, 1000);
   }

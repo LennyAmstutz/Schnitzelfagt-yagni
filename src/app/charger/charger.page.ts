@@ -11,7 +11,7 @@ import {
 import { SuccessScreenComponent } from '../components/success-screen/success-screen.component';
 import { TaskBoxComponent } from '../components/task-box/task-box.component';
 import { GameService } from '../services/game.service';
-import {TASK_DURATIONS} from "../constants/task-durations";
+import { TASK_DURATIONS } from '../constants/task-durations';
 
 @Component({
   selector: 'app-charger',
@@ -57,8 +57,8 @@ export class ChargerPage implements OnInit {
 
       if (this.remainingSeconds <= 0) {
         clearInterval(this.intervalId);
-        this.success = true;
-        this.game.completeTask();
+        this.game.skipTask();
+        this.router.navigate(['/wifi']);
       }
     }, 1000);
   }

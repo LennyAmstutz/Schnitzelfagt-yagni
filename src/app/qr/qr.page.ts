@@ -57,8 +57,8 @@ export class QrPage implements OnInit {
 
       if (this.remainingSeconds <= 0) {
         clearInterval(this.intervalId);
-        this.success = true;
-        this.game.completeTask();
+        this.game.skipTask();
+        this.router.navigate(['/sensor']);
       }
     }, 1000);
   }
