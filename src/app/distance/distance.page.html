@@ -1,11 +1,11 @@
 <ng-container *ngIf="!success">
   <app-task-box
-    [title]="'Distance Task'"
-    [description]="'Bewege dich oder warte 10 Sekunden.'"
+    class="chargerTaskInstuctions"
+    [title]="'Lauf 10 Meter'"
+    [description]="'Bewege dich mindestens 10 Meter vom Startpunkt weg. Verbleibende Distanz: ' + distanceRemaining.toFixed(2) + ' m'"
     [time]="formattedTime"
     [skipRoute]="'/qr'"
     (skip)="onSkip()"
-
   ></app-task-box>
 </ng-container>
 
