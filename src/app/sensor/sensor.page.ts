@@ -9,6 +9,9 @@ import {
 } from '@ionic/angular/standalone';
 import { SuccessScreenComponent } from '../components/success-screen/success-screen.component';
 import { TaskBoxComponent } from '../components/task-box/task-box.component';
+import { Router } from '@angular/router';
+import { GameService } from '../services/game.service';
+import { TASK_DURATIONS } from '../constants/task-durations';
 
 @Component({
   selector: 'app-sensor',
@@ -27,25 +30,42 @@ import { TaskBoxComponent } from '../components/task-box/task-box.component';
   ],
 })
 export class SensorPage implements OnInit {
-  formattedTime = '00:10';
+  formattedTime = '00:00';
   success = false;
-  remainingSeconds = 10;
+  remainingSeconds = TASK_DURATIONS.sensor;
+  private intervalId: any;
+
+  constructor(
+    private router: Router,
+    private game: GameService,
+  ) {}
 
   ngOnInit() {
+    this.formattedTime = this.formatTime(this.remainingSeconds);
     this.startCountdown();
   }
 
+  onSkip() {
+    this.game.skipTask();
+    this.router.navigate(['/charger']);
+  }
+
   startCountdown() {
-    const interval = setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.remainingSeconds--;
-      const m = String(Math.floor(this.remainingSeconds / 60)).padStart(2, '0');
-      const s = String(this.remainingSeconds % 60).padStart(2, '0');
-      this.formattedTime = `${m}:${s}`;
+      this.formattedTime = this.formatTime(this.remainingSeconds);
 
       if (this.remainingSeconds <= 0) {
-        clearInterval(interval);
+        clearInterval(this.intervalId);
         this.success = true;
+        this.game.completeTask();
       }
     }, 1000);
+  }
+
+  private formatTime(seconds: number): string {
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    return `${m}:${s}`;
   }
 }

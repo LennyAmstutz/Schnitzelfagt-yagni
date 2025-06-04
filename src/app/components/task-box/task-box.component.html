@@ -30,7 +30,7 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button [routerLink]="skipRoute">
+      <ion-button (click)="skip.emit()">
         <div class="footer-icon-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"

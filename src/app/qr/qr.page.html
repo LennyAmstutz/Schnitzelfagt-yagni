@@ -4,6 +4,8 @@
     [description]="'Bewege dich oder warte 10 Sekunden.'"
     [time]="formattedTime"
     [skipRoute]="'/sensor'"
+    (skip)="onSkip()"
+
   ></app-task-box>
 </ng-container>
 

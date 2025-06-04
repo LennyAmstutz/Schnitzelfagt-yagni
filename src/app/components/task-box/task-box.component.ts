@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { IonicModule, AlertController } from '@ionic/angular';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { skip } from 'rxjs';
 
 @Component({
   selector: 'app-task-box',
@@ -15,6 +16,7 @@ export class TaskBoxComponent {
   @Input() description: string = '';
   @Input() time: string = '00:00';
   @Input() skipRoute: string = '/';
+  @Output() skip = new EventEmitter<void>();
 
   constructor(
     private alertController: AlertController,
@@ -42,4 +44,5 @@ export class TaskBoxComponent {
 
     await alert.present();
   }
+
 }

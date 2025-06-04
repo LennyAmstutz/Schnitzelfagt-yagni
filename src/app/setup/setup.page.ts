@@ -1,4 +1,4 @@
-import {Component, ViewChild, ElementRef, inject} from '@angular/core';
+import { Component, ViewChild, ElementRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,8 +9,12 @@ import {
   IonTitle,
   IonToolbar,
   IonButton,
-  IonModal, IonLabel, IonButtons, AlertController
+  IonModal,
+  IonLabel,
+  IonButtons,
+  AlertController,
 } from '@ionic/angular/standalone';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-setup',
@@ -26,15 +30,18 @@ import {
     FormsModule,
     IonInput,
     IonButton,
-    IonLabel
-  ]
+    IonLabel,
+  ],
 })
-export class SetupPage  {
+export class SetupPage {
   userName: string = '';
-
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private game: GameService,
+  ) {}
   submitName() {
     if (!this.userName.trim()) return;
+    this.game.startGame();
     this.router.navigate(['/camera-permission']);
   }
 
