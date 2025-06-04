@@ -1,16 +1,12 @@
 .battery-charging-outline{
-  color: white;
   font-size: 150px;
-  display: flex;
+  color: white;
 }
 
 .batteryBox{
-  align-items: center;
-  display: flex;
-  padding-left : 30%;
-  padding-bottom: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.chargerTaskInstuctions{
-  margin-bottom: 50px;
-}

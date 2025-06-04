@@ -8,6 +8,8 @@ import {BatteryStatusResponse} from "@awesome-cordova-plugins/battery-status";
 import {IonIcon} from "@ionic/angular/standalone";
 import {addIcons} from "ionicons";
 import {batteryChargingOutline} from "ionicons/icons";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-charger',
@@ -30,10 +32,14 @@ export class ChargerPage implements OnInit {
   charging = false;
   private interval: any = null;
 
-  constructor(private batteryStatus: BatteryStatus, private ngZone: NgZone) {
+  constructor(
+    private batteryStatus: BatteryStatus,
+    private ngZone: NgZone,
+    private router: Router
+  ) {
     addIcons({
       batteryChargingOutline
-    })
+    });
   }
 
   ngOnInit() {
@@ -69,6 +75,7 @@ export class ChargerPage implements OnInit {
 
       if (this.remainingSeconds <= 0) {
         this.stopCountdown();
+
       }
     }, 1000);
   }
@@ -77,6 +84,12 @@ export class ChargerPage implements OnInit {
     if (this.interval !== null) {
       clearInterval(this.interval);
       this.interval = null;
+
+      if (!this.success) {
+        this.ngZone.run(() => {
+          this.router.navigate(['/wifi']);
+        });
+      }
     }
   }
 }
