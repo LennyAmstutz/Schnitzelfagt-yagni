@@ -19,10 +19,6 @@ import { TASK_DURATIONS } from '../constants/task-durations';
   styleUrls: ['./sensor.page.scss'],
   standalone: true,
   imports: [
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     SuccessScreenComponent,
@@ -47,7 +43,15 @@ export class SensorPage implements OnInit {
 
   onSkip() {
     this.game.skipTask();
+    this.stopTimer();
     this.router.navigate(['/charger']);
+  }
+
+  private stopTimer() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 
   startCountdown() {

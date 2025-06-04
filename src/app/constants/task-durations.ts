@@ -3,6 +3,6 @@ export const TASK_DURATIONS = {
   distance: 10,
   qr: 40,
   sensor: 10,
-  charger: 10,
-  wifi: 10,
+  charger: 90,
+  wifi: 90,
 };

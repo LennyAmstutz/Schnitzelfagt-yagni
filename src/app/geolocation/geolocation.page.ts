@@ -30,7 +30,7 @@ export class GeolocationPage implements OnInit {
   success = false;
   remainingSeconds = TASK_DURATIONS.geolocation;
   private intervalId: any;
-  currentDistance = '0';            // <-- Hier die Property für die Distanz
+  currentDistance = '0';
   private cdr = inject(ChangeDetectorRef);
 
   private watchId: string | undefined;
@@ -46,8 +46,16 @@ export class GeolocationPage implements OnInit {
   }
 
   onSkip() {
+    this.stopTimer();
     this.game.skipTask();
     this.router.navigate(['/distance']);
+  }
+
+  private stopTimer() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 
   startCountdown() {

@@ -68,8 +68,9 @@ export class ChargerPage implements OnInit {
         this.ngZone.run(() => {
           this.charging = status.isPlugged;
           if (this.charging && !this.success) {
-            this.stopAll();
             this.success = true;
+            this.game.completeTask();
+            this.stopAll();
           }
         });
       });
@@ -77,8 +78,8 @@ export class ChargerPage implements OnInit {
 
   onSkip() {
     this.game.skipTask();
-    this.router.navigate(['/wifi']);
     this.stopAll();
+    this.router.navigate(['/wifi']);
   }
 
   private startCountdown() {
@@ -87,9 +88,7 @@ export class ChargerPage implements OnInit {
       this.formattedTime = this.formatTime(this.remainingSeconds);
 
       if (this.remainingSeconds <= 0) {
-        this.stopAll();
-        this.game.skipTask();
-        this.router.navigate(['/wifi']);
+        this.onSkip();
       }
     }, 1000);
   }

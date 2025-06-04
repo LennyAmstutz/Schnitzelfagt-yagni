@@ -19,10 +19,6 @@ import { TASK_DURATIONS } from '../constants/task-durations';
   styleUrls: ['./distance.page.scss'],
   standalone: true,
   imports: [
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     SuccessScreenComponent,
@@ -47,9 +43,16 @@ export class DistancePage implements OnInit {
 
   onSkip() {
     this.game.skipTask();
+    this.stopTimer();
     this.router.navigate(['/qr']);
   }
 
+  private stopTimer() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
+  }
   startCountdown() {
     this.intervalId = setInterval(() => {
       this.remainingSeconds--;

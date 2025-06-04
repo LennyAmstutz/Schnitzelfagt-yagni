@@ -20,7 +20,6 @@ import { TaskBoxComponent } from '../components/task-box/task-box.component';
 import { GameService } from '../services/game.service';
 import { TASK_DURATIONS } from '../constants/task-durations';
 
-// Zugriff auf das globale Cordova-Plugin
 declare var WifiWizard2: any;
 
 @Component({
@@ -29,11 +28,6 @@ declare var WifiWizard2: any;
   imports: [
     CommonModule,
     FormsModule,
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    IonButton,
     IonIcon,
     SuccessScreenComponent,
     TaskBoxComponent,
@@ -65,15 +59,14 @@ export class WifiPage implements OnInit {
 
   ngOnInit() {
     this.formattedTime = this.formatTime(this.remainingSeconds);
-
     this.startCountdown();
     this.monitorWifi();
   }
 
   onSkip() {
     this.game.skipTask();
-    this.router.navigate(['/finish']);
     this.stopAll();
+    this.router.navigate(['/finish']);
   }
 
   startCountdown() {
@@ -111,6 +104,7 @@ export class WifiPage implements OnInit {
           if (this.wasConnected && this.wasDisconnected && !this.success) {
             this.success = true;
             this.stopAll();
+            this.game.completeTask();
           }
         });
       } catch {
@@ -130,12 +124,10 @@ export class WifiPage implements OnInit {
   }
 
   private stopAll() {
-    // Stoppe Countdown
     if (this.intervalId !== null) {
       clearInterval(this.intervalId);
       this.intervalId = null;
     }
-    // Stoppe WiFi-Monitoring
     if (this.wifiCheckInterval !== null) {
       clearInterval(this.wifiCheckInterval);
       this.wifiCheckInterval = null;

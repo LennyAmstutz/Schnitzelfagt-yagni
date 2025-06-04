@@ -22,10 +22,6 @@ import { CapacitorBarcodeScanner } from '@capacitor/barcode-scanner';
   selector: 'app-qr',
   standalone: true,
   imports: [
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     IonButton,
     CommonModule,
     FormsModule,
@@ -57,7 +53,14 @@ export class QrPage implements OnInit {
 
   onSkip() {
     this.game.skipTask();
+    this.stopTimer();
     this.router.navigate(['/sensor']);
+  }
+  private stopTimer() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 
   startCountdown() {
