@@ -4,11 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonButton,
   IonIcon,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
@@ -31,11 +26,6 @@ import {
   imports: [
     CommonModule,
     FormsModule,
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    IonButton,
     IonIcon,
     SuccessScreenComponent,
     TaskBoxComponent,

@@ -1,5 +1,5 @@
 export const TASK_DURATIONS = {
-  geolocation: 20,
+  geolocation: 600,
   distance: 10,
   qr: 10,
   sensor: 10,
