@@ -103,7 +103,6 @@ export class WifiPage implements OnInit {
 
           if (this.wasConnected && this.wasDisconnected && !this.success) {
             this.success = true;
-            this.game.completeTask();
             this.stopAll();
             this.haptic.vibrate();
           }
@@ -118,6 +117,7 @@ export class WifiPage implements OnInit {
           if (this.wasConnected && this.wasDisconnected && !this.success) {
             this.success = true;
             this.haptic.vibrate();
+            this.game.completeTask();
             this.stopAll();
             this.haptic.vibrate();
           }
