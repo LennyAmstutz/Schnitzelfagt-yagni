@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import {
   IonContent,
   IonHeader,
+  IonIcon,
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
@@ -23,6 +24,7 @@ import { TASK_DURATIONS } from '../constants/task-durations';
     FormsModule,
     SuccessScreenComponent,
     TaskBoxComponent,
+    IonIcon,
   ],
 })
 export class SensorPage implements OnInit {

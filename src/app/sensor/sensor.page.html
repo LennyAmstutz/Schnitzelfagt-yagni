@@ -1,12 +1,13 @@
 <ng-container *ngIf="!success">
   <app-task-box
     [title]="'Sensor Task'"
-    [description]="'Bewege dich oder warte 10 Sekunden.'"
+    [description]="'Drehe dein Gerät auf den Kopf.'"
     [time]="formattedTime"
     [skipRoute]="'/charger'"
     (skip)="onSkip()"
 
   ></app-task-box>
+  <ion-icon name="sync-outline" class="rotate-icon"></ion-icon>
 </ng-container>
 
 <app-success-screen *ngIf="success" [nextRoute]="'/charger'"></app-success-screen>

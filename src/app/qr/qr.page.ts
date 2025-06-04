@@ -5,6 +5,7 @@ import {
   IonButton,
   IonContent,
   IonHeader,
+  IonIcon,
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
@@ -17,6 +18,8 @@ import { TASK_DURATIONS } from '../constants/task-durations';
 
 import { HapticService } from '../services/haptics.service';
 import { CapacitorBarcodeScanner } from '@capacitor/barcode-scanner';
+import { addIcons } from 'ionicons';
+import { qrCodeOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-qr',
@@ -27,6 +30,7 @@ import { CapacitorBarcodeScanner } from '@capacitor/barcode-scanner';
     FormsModule,
     SuccessScreenComponent,
     TaskBoxComponent,
+    IonIcon,
   ],
   templateUrl: './qr.page.html',
   styleUrls: ['./qr.page.scss'],
@@ -43,7 +47,11 @@ export class QrPage implements OnInit {
     private router: Router,
     private game: GameService,
     private haptic: HapticService,
-  ) {}
+  ) {
+    addIcons({
+      qrCodeOutline,
+    });
+  }
 
   ngOnInit() {
     this.startTime = Date.now();
