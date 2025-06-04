@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: stretch;
   height: auto;
-  margin-top: 30vh; // verschiebt nach unten (zentriert optisch)
+  margin-top: 30vh;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background: #fff;
 }
@@ -26,4 +26,28 @@
 .button-row {
   display: flex;
   justify-content: space-between;
+}
+
+@media (prefers-color-scheme: dark) {
+  .center-box {
+    background: #1e1e1e;
+    border: 1px solid #444;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  .label {
+    color: #fff;
+  }
+
+  ion-input {
+    --background: #2c2c2e;
+    --color: #fff;
+    --placeholder-color: #aaa;
+    --border-color: #555;
+  }
+
+  ion-button {
+    --color: #fff;
+  }
 }
