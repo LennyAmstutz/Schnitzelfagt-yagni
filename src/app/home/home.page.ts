@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {IonHeader, IonToolbar, IonTitle, IonContent, IonButton} from '@ionic/angular/standalone';
 import {LeaderboardComponent} from "../leaderboard/leaderboard.component";
 import {RouterLink} from "@angular/router";
@@ -11,4 +11,11 @@ import {RouterLink} from "@angular/router";
 })
 export class HomePage {
   constructor() {}
+  @ViewChild(LeaderboardComponent) leaderboard!: LeaderboardComponent;
+
+  ionViewWillEnter() {
+    if (this.leaderboard) {
+      this.leaderboard.loadSchnitzeljagden();
+    }
+  }
 }
