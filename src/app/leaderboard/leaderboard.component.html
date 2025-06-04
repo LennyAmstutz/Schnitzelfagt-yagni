@@ -1,24 +1,22 @@
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>date</th>
-    <th>🏅</th>
-    <th>🥔</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Luca</td>
-    <td>01.01.2000</td>
-    <td>1</td>
-    <td>2</td>
-  </tr>
-  <tr>
-    <td>Max</td>
-    <td>01.01.2000</td>
-    <td>1</td>
-    <td>2</td>
-  </tr>
-  </tbody>
-</table>
+<ion-card-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col><strong>Name</strong></ion-col>
+      <ion-col><strong>Date</strong></ion-col>
+      <ion-col><strong>🍗</strong></ion-col>
+      <ion-col><strong>🥔</strong></ion-col>
+    </ion-row>
+
+    @for (row of rows; track row.name) {
+      <ion-row class="divider-row">
+        <ion-col>{{row.name}}</ion-col>
+        <ion-col>{{row.date}}</ion-col>
+        <ion-col>{{row.countMedalien}}</ion-col>
+        <ion-col>{{row.countPotatos}}</ion-col>
+      </ion-row>
+    }
+
+  </ion-grid>
+</ion-card-content>
+
+

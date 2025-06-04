@@ -12,6 +12,7 @@ export class GameService {
     this.startTime = Date.now();
     this.medalCount = 0;
     this.potatoCount = 0;
+    localStorage.setItem('startTime', Date.now().toString());
   }
 
   getElapsedTime(): string {

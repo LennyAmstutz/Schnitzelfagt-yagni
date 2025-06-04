@@ -33,16 +33,19 @@ import { GameService } from '../services/game.service';
     IonLabel,
   ],
 })
+
 export class SetupPage {
   userName: string = '';
   constructor(
     private router: Router,
     private game: GameService,
   ) {}
+
   submitName() {
     if (!this.userName.trim()) return;
     this.game.startGame();
     this.router.navigate(['/camera-permission']);
+    localStorage.setItem('name', this.userName);
   }
 
   quit() {
