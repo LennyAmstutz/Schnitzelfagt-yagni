@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IonicModule, AlertController } from '@ionic/angular';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { skip } from 'rxjs';
+import { home } from 'ionicons/icons';
 
 @Component({
   selector: 'app-task-box',
@@ -18,31 +18,9 @@ export class TaskBoxComponent {
   @Input() skipRoute: string = '/';
   @Output() skip = new EventEmitter<void>();
 
-  constructor(
-    private alertController: AlertController,
-    private router: Router,
-  ) {}
+  constructor(private route: Router) {}
 
-  async presentHomeAlert() {
-    const alert = await this.alertController.create({
-      header: 'Bestätigung',
-      message: 'Willst du wirklich zur Startseite zurückkehren?',
-      buttons: [
-        {
-          text: 'Nein',
-          role: 'cancel',
-        },
-        {
-          text: 'Ja',
-          role: 'confirm',
-          handler: () => {
-            this.router.navigate(['/home']);
-          },
-        },
-      ],
-    });
-
-    await alert.present();
+  goHome() {
+    this.route.navigate(['/home']);
   }
-
 }
