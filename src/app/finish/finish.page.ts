@@ -24,7 +24,6 @@ export class FinishPage {
   totalTime: string = '00:00';
   totalMedals: number = 0;
   totalPotatoes: number = 0;
-  totalDistance: number = 0;
   private pointService = inject(PointService)
   schnitzelJagd: any;
 
