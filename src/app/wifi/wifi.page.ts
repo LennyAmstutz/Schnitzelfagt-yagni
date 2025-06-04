@@ -2,6 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HapticService } from '../services/haptics.service';
 
 import {
   IonContent,
@@ -13,10 +14,8 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { wifiOutline } from 'ionicons/icons';
-
 import { SuccessScreenComponent } from '../components/success-screen/success-screen.component';
 import { TaskBoxComponent } from '../components/task-box/task-box.component';
-
 import { GameService } from '../services/game.service';
 import { TASK_DURATIONS } from '../constants/task-durations';
 
@@ -51,6 +50,7 @@ export class WifiPage implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private game: GameService,
+    private haptic: HapticService,
   ) {
     addIcons({
       wifiOutline,
@@ -116,6 +116,7 @@ export class WifiPage implements OnInit {
 
           if (this.wasConnected && this.wasDisconnected && !this.success) {
             this.success = true;
+            this.haptic.vibrate();
             this.stopAll();
           }
         });

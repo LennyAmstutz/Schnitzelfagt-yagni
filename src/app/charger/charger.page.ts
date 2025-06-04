@@ -2,6 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HapticService } from '../services/haptics.service';
 
 import {
   IonIcon,
@@ -49,6 +50,7 @@ export class ChargerPage implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private game: GameService,
+    private haptic: HapticService,
   ) {
     addIcons({
       batteryChargingOutline,
@@ -70,6 +72,7 @@ export class ChargerPage implements OnInit {
           if (this.charging && !this.success) {
             this.success = true;
             this.game.completeTask();
+            this.haptic.vibrate();
             this.stopAll();
           }
         });
