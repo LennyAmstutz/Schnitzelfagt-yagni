@@ -23,7 +23,6 @@ out-tsc/
 node_modules/
 
 # Capacitor native platforms
-android/
 ios/
 
 # Angular / Ionic cache
