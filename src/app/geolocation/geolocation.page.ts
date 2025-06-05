@@ -119,7 +119,6 @@ export class GeolocationPage implements OnInit {
     clearInterval(this.intervalId);
     this.haptic.vibrate();
     await this.stopWatcher();
-    this.game.completeTask();
   }
 
   async stopWatcher() {
