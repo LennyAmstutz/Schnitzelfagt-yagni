@@ -1,31 +1,73 @@
 .permission-content {
   --background: #121212;
-  color: white;
+  color: #ffffff;
 }
 
 .permission-wrapper {
+  max-width: 320px;
+  margin: auto;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem;
   gap: 1.5rem;
 }
 
 .permission-text {
-  color: white;
-  font-size: 1.25rem;
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  line-height: 1.5;
   text-align: center;
 }
 
 .permission-button {
-  --background: var(--ion-color-primary);
-  color: white;
-  font-size: 1.1rem;
+  width: 100%;
+  --background: #000000;
+  --color: #ffffff;
+  font-size: 1rem;
   --border-radius: 8px;
+  --padding-top: 0.75rem;
+  --padding-bottom: 0.75rem;
+  --padding-start: 1.5rem;
+  --padding-end: 1.5rem;
+  transition: background 0.2s ease-in-out;
+}
+
+.permission-button:hover {
+  --background: #222222;
+}
+
+.permission-button:active {
+  --background: #444444;
 }
 
 .permission-button[fill="outline"] {
-  --border-color: #ffffff;
-  color: white;
-  --border-width: 1px;
+  --background: #000000;
+  --color: #ffffff;
+  --border-color: transparent;
+  --border-width: 0;
+}
+
+.permission-button[fill="outline"]:hover {
+  --background: #222222;
+}
+
+.permission-button[fill="outline"]:active {
+  --background: #444444;
+}
+
+ion-header {
+  --background: #1f1f1f;
+  --color: #ffffff;
+}
+
+ion-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+ion-content {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
