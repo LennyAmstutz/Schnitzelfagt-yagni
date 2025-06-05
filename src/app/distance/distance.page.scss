@@ -1,0 +1,20 @@
+.distanceBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-color-scheme: light) {
+  .distanceBox ion-icon {
+    font-size: 150px;
+    color: black;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .distanceBox ion-icon {
+    font-size: 150px;
+    color: white;
+  }
+}

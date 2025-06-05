@@ -1,12 +1,18 @@
 <ng-container *ngIf="!success">
   <app-task-box
     [title]="'Geolocation Task'"
-    [description]="'Bewege dich oder warte 10 minuten. Aktuelle Distanz: ' + currentDistance + ' m'"
+    [description]="'Move to the Migros across the street. Current distance: ' + currentDistance + ' m'"
     [time]="formattedTime"
     [skipRoute]="'/distance'"
     (skip)="onSkip()"
 
   ></app-task-box>
+
+  <div class="locationBox">
+    <ion-icon name="location-outline"></ion-icon>
+  </div>
 </ng-container>
+
+
 
 <app-success-screen *ngIf="success" [nextRoute]="'/distance'"></app-success-screen>

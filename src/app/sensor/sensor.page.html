@@ -1,7 +1,7 @@
 <ng-container *ngIf="!success">
   <app-task-box
     [title]="'Sensor Task'"
-    [description]="'Drehe dein Gerät auf den Kopf.'"
+    [description]="'Turn your device upside down.'"
     [time]="formattedTime"
     [skipRoute]="'/charger'"
     (skip)="onSkip()"
@@ -10,10 +10,13 @@
   <ion-grid fixed>
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center ion-margin-top">
-        <ion-icon name="sync-outline" class="rotate-icon" size="large"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <div class="sensorBox">
+    <ion-icon name="sync-outline"></ion-icon>
+  </div>
 </ng-container>
 
 <app-success-screen *ngIf="success" [nextRoute]="'/charger'"></app-success-screen>

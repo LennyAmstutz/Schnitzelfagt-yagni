@@ -1,0 +1,22 @@
+.locationBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-color-scheme: light) {
+  .locationBox ion-icon {
+    font-size: 150px;
+    color: black;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .locationBox ion-icon {
+    font-size: 150px;
+    color: white;
+  }
+}
+
+

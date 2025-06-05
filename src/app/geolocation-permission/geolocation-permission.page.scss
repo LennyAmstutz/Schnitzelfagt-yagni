@@ -71,3 +71,12 @@ ion-content {
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
 }
+
+.geolocation-permission-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+

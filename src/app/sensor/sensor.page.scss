@@ -13,3 +13,24 @@ ion-icon.rotate-icon {
     transform: rotate(360deg);
   }
 }
+
+.sensorBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-color-scheme: light) {
+  .sensorBox ion-icon {
+    font-size: 150px;
+    color: black;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .sensorBox ion-icon {
+    font-size: 150px;
+    color: white;
+  }
+}

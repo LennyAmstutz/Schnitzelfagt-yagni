@@ -7,6 +7,9 @@ import { TaskBoxComponent } from '../components/task-box/task-box.component';
 import { Router } from '@angular/router';
 import { GameService } from '../services/game.service';
 import { TASK_DURATIONS } from '../constants/task-durations';
+import {IonicModule} from "@ionic/angular";
+import {addIcons} from "ionicons";
+import {navigateCircleOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-distance',
@@ -18,6 +21,7 @@ import { TASK_DURATIONS } from '../constants/task-durations';
     FormsModule,
     SuccessScreenComponent,
     TaskBoxComponent,
+    IonicModule,
   ],
 })
 export class DistancePage implements OnInit, OnDestroy {
@@ -36,7 +40,11 @@ export class DistancePage implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private game: GameService,
-  ) {}
+  ) {
+    addIcons({
+      navigateCircleOutline,
+    });
+  }
 
   async ngOnInit() {
     this.formattedTime = this.formatTime(this.remainingSeconds);
@@ -138,6 +146,7 @@ export class DistancePage implements OnInit, OnDestroy {
       this.success = true;
       this.stopTimer();
       this.stopWatcher();
+      this.game.completeTask();
     });
   }
 

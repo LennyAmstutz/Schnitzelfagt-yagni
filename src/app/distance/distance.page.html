@@ -1,12 +1,16 @@
 <ng-container *ngIf="!success">
   <app-task-box
     class="chargerTaskInstuctions"
-    [title]="'Lauf 10 Meter'"
-    [description]="'Bewege dich mindestens 10 Meter vom Startpunkt weg. Verbleibende Distanz: ' + distanceRemaining.toFixed(2) + ' m'"
+    [title]="'Walk 10 meters.'"
+    [description]="'Move at least 10 meters away from the starting point. Remaining distance: ' + distanceRemaining.toFixed(2) + ' m'"
     [time]="formattedTime"
     [skipRoute]="'/qr'"
     (skip)="onSkip()"
   ></app-task-box>
+
+  <div class="distanceBox">
+    <ion-icon name="navigate-circle-outline"></ion-icon>
+  </div>
 </ng-container>
 
 <app-success-screen *ngIf="success" [nextRoute]="'/qr'"></app-success-screen>

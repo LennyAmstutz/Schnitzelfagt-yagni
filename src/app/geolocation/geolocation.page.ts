@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 import { GameService } from '../services/game.service';
 import { TASK_DURATIONS } from '../constants/task-durations';
 import { HapticService } from '../services/haptics.service';
+import {IonIcon} from "@ionic/angular/standalone";
+import {addIcons} from "ionicons";
+import {locationOutline} from "ionicons/icons";
+
 
 enum GeolocationEnum {
   latitude = 47.027574,
@@ -40,7 +44,11 @@ export class GeolocationPage implements OnInit {
     private router: Router,
     private game: GameService,
     private haptic: HapticService,
-  ) {}
+  ) {
+    addIcons({
+      locationOutline,
+    });
+  }
 
   async ngOnInit() {
     this.startCountdown();
@@ -111,6 +119,7 @@ export class GeolocationPage implements OnInit {
     clearInterval(this.intervalId);
     this.haptic.vibrate();
     await this.stopWatcher();
+    this.game.completeTask();
   }
 
   async stopWatcher() {

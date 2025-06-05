@@ -4,7 +4,7 @@
 <ng-container *ngIf="!success">
   <app-task-box
     [title]="'QR Code Task'"
-    [description]="'Scanne den richtigen QR Code, um fortzufahren.'"
+    [description]="'Scan the correct QR code to continue.'"
     [time]="formattedTime"
     [skipRoute]="'/sensor'"
     (skip)="onSkip()"
@@ -13,11 +13,10 @@
   <ion-grid fixed>
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center ion-margin-top">
-        <ion-icon name="qr-code-outline" class="qr-display-icon" size="large"></ion-icon>
+        <ion-icon class="qrBox" name="qr-code-outline" size="large"></ion-icon>
       </ion-col>
       <ion-col size="12" class="ion-margin-top">
         <ion-button expand="block" color="primary" (click)="scanBarcode()">
-          <ion-icon name="qr-code-outline" slot="start"></ion-icon>
           Scan QR Code
         </ion-button>
       </ion-col>

@@ -1,7 +1,7 @@
 <ng-container *ngIf="!success">
   <app-task-box
     [title]="'Wifi Task'"
-    [description]="'Verbinde dich mit dem WLAN und trenne es wieder.'"
+    [description]="'Connect to the Wi-Fi and then disconnect it again.'"
     [time]="formattedTime"
     [skipRoute]="'/finish'"
     (skip)="onSkip()"

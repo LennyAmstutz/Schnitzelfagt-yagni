@@ -17,8 +17,8 @@ import { Router } from '@angular/router';
 import { GameService } from '../services/game.service';
 import { TASK_DURATIONS } from '../constants/task-durations';
 import { addIcons } from 'ionicons';
-import { qrCodeOutline, syncOutline } from 'ionicons/icons';
 import { HapticService } from '../services/haptics.service';
+import {syncOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-sensor',
@@ -48,7 +48,11 @@ export class SensorPage implements OnInit, OnDestroy {
     private game: GameService,
     private zone: NgZone,
     private haptic: HapticService,
-  ) {}
+  ) {
+    addIcons({
+      syncOutline,
+    });
+  }
 
   ngOnInit() {
     this.formattedTime = this.formatTime(this.remainingSeconds);
