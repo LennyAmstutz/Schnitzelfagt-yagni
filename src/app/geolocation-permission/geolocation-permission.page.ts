@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import {
   IonButton,
   IonContent,
-  IonHeader,
+  IonHeader, IonRouterLink,
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
@@ -24,6 +24,8 @@ import { Geolocation } from '@capacitor/geolocation';
     CommonModule,
     FormsModule,
     IonButton,
+    IonRouterLink,
+    RouterModule,
   ],
 })
 export class GeolocationPermissionPage {

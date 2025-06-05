@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import {
   IonButton,
   IonContent,
-  IonHeader,
+  IonHeader, IonRouterLink,
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import { Camera } from '@capacitor/camera';
 
 @Component({
@@ -24,6 +24,8 @@ import { Camera } from '@capacitor/camera';
     CommonModule,
     FormsModule,
     IonButton,
+    IonRouterLink,
+    RouterModule,
   ],
 })
 export class CameraPermissionPage {
